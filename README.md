@@ -2,7 +2,7 @@
 Project that manage the data of a portfolio page.
 
 ## Content
-This proyect content the backend and frontend part to manage the porfolio page.
+This project content the backend and frontend part to manage the porfolio page.
 
 ## What is my register on the DB
 The register that I created to work with was the one with id "114" and email "aloy@gmail.com"
@@ -42,11 +42,11 @@ http://localhost:4200
 ```
 
 ## How to consume endpoints on Postman
-1. For the put endpoint that recover the profile information, you need to type the url
+1. For the get endpoint that recover the profile information, you need to type the url
 ```bash
 http://localhost:8085/zemoga/portfolio/profileinformation/:email
 ```
-2. For the get endpoint that update the profile information, you need to type
+2. For the put endpoint that update the profile information, you need to type
 ```bash
 http://localhost:8085/zemoga/portfolio/profileinformation
 ```
@@ -91,4 +91,4 @@ update zemoga_test_db.portfolio
 set names = 'Aloy', last_names = 'Hoekstra', name = 'Aloy Hoekstra', experience_summary = 'I have been training my hole life, since I was a kid, my caretaker, Rost, taught me how to fight, how to stay one step ahead of machines in order to deal with them. I am very capable to accomplishing differents goals either with a team or alone.'
 where email = 'aloy@gmail.com';
 ```
-* In the frontend, I chose and image, then I removed its the background, but for some reasons, when I show the image in the web browser, it appears with a white background.
+* In the frontend, I chose and image, then I removed its background, but for some reasons, when I show the image in the web browser, it appears with a white background.
