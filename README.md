@@ -66,7 +66,7 @@ http://localhost:8085/zemoga/portfolio/twitter/getdatauser/:username
 ```
 4. For the get endpoint that recover the twitter user's tweets, you need to type
 ```bash
-http://localhost:8085/zemoga/portfolio/twitter/getusertweets/:username
+http://localhost:8085/zemoga/portfolio/twitter/getusertweets/:twitterUserId
 ```
 
 ## Technologies used
@@ -91,5 +91,4 @@ update zemoga_test_db.portfolio
 set names = 'Aloy', last_names = 'Hoekstra', name = 'Aloy Hoekstra', experience_summary = 'I have been training my hole life, since I was a kid, my caretaker, Rost, taught me how to fight, how to stay one step ahead of machines in order to deal with them. I am very capable to accomplishing differents goals either with a team or alone.'
 where email = 'aloy@gmail.com';
 ```
-* In the frontend, in the file "principal.component.ts" I tried to use the function "getProfileInformation()" to get the twitter username, then called the funcion "getTwitterUserTweets()" and passed the parameter username that I had recovered in the prevous function, but I couldn't manage the asynchrony, I couldn't do that the functions will be executed in order.
 * In the frontend, I chose and image, then I removed its the background, but for some reasons, when I show the image in the web browser, it appears with a white background.

@@ -35,7 +35,8 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfileInformation(this.globalDataService.email);
-    this.getTwitterUserTweets(this.globalDataService.username);
+    setTimeout(() => this.getDataUserTwitter(this.profileInformation.twitterUser), 500);
+    setTimeout(() => this.getTwitterUserTweets(this.twitterUserData.data.id), 1000);
   }
 
   /**
@@ -47,15 +48,36 @@ export class PrincipalComponent implements OnInit {
       .subscribe(
         (data) => { // Success          
           if (data.length != 0) {
-            this.profileInformation = data;
-            console.log("profileInformation:", this.profileInformation);
+            this.profileInformation = data;            
           } else {
             console.log("Profile information empty. Please check it.");
           }
         },
         (error) => {
           console.log("Error susbscribe getProfileInformation");
-          console.error(error);
+          console.error("Error: ", error);
+        }
+      );
+  }
+
+  /**
+   * Function that call the apirest service in charge of getting the twitter user data.
+   */
+  getDataUserTwitter(username: string) {
+    console.log("Function getTwitterUserTweets()");
+    let finalUsername = username.substring(1);
+    this.apirestProfileService.getDataUserTwitter(finalUsername)
+      .subscribe(
+        (data) => { // Success
+          if (data.length != 0) {
+            this.twitterUserData = data;            
+          } else {
+            console.log("Twitter user not found. Please check it.");
+          }
+        },
+        (error) => {
+          console.log("Error susbscribe getTwitterUserData");
+          console.error("Error: ", error);
         }
       );
   }
@@ -63,21 +85,20 @@ export class PrincipalComponent implements OnInit {
   /**
    * Function that call the apirest service in charge of getting the user's tweets.
    */
-  getTwitterUserTweets(username: string) {
-    console.log("Function getTwitterUserTweets()");      
-    this.apirestProfileService.getTwitterUserTweets(username)
+  getTwitterUserTweets(twitterUserId: string) {
+    console.log("Function getTwitterUserTweets()");
+    this.apirestProfileService.getTwitterUserTweets(twitterUserId)
       .subscribe(
         (data) => { // Success
           if (data.length != 0) {
-            this.tweetsUser = data;
-            console.log("tweetsUser: ", this.tweetsUser);
+            this.tweetsUser = data;            
           } else {
             console.log("Twitter user not found. Please check it.");
           }
         },
         (error) => {
-          console.log("Error susbscribe getTwitterUserData");
-          console.error(error);
+          console.log("Error susbscribe getTwitterUserTweets");
+          console.error("Error: ", error);
         }
       );
   }

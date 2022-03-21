@@ -14,14 +14,8 @@ export class GlobalDataService {
     */
   email: string;
 
-  /**
-    * Global variable that will save the twitter username.
-    */
-  username: string;
-
   constructor() { 
-    this.email = "aloy@gmail.com";
-    this.username = "AloyHoekstra75";  
+    this.email = "aloy@gmail.com";    
   }
 
   getEmail(): string {
@@ -30,13 +24,5 @@ export class GlobalDataService {
 
   setEmail(email: string) {
     this.email = email;
-  }
-
-  getUsername(): string {
-    return this.username;
-  }
-
-  setUsername(username: string) {
-    this.username = username;
   }
 }

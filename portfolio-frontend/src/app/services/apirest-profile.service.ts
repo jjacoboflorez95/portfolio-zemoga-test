@@ -24,12 +24,22 @@ export class ApirestProfileService {
   }
 
   /**
+   * Function that consume the apirest that brings the twitter user data.
+   * @param username Receive the twitter username of an specific person.
+   * @returns Twitter user data.
+   */
+   getDataUserTwitter(username: string): Observable<any>{
+    let url: string = "http://localhost:8085/zemoga/portfolio/twitter/getdatauser/" + username;
+    return this.http.get(url);
+  }
+
+  /**
    * Function that consume the apirest that brings the user's tweets.
    * @param usernameId Receive the twitter user's id of an specific person.
    * @returns User's tweets.
    */
-  getTwitterUserTweets(username: string): Observable<any>{
-    let url: string = "http://localhost:8085/zemoga/portfolio/twitter/getusertweets/" + username;
+  getTwitterUserTweets(twitterUserId: string): Observable<any>{
+    let url: string = "http://localhost:8085/zemoga/portfolio/twitter/getusertweets/" + twitterUserId;
     return this.http.get(url);
   }
 }

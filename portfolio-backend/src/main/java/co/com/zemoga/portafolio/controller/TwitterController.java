@@ -40,19 +40,19 @@ public class TwitterController {
 
     /**
      * Endpoint to consume the twitter apirest that brings the user's tweets.
-     * @param username Twitter username of an specific person.
+     * @param twitterUserId Twitter user's id of an specific person.
      * @return User's tweets.
+     * @author jacoboflorez
      */
-    @GetMapping("/getusertweets/{username}")
-    public ResponseEntity<TweetsUserDto> getUserTweetsTwitter(@PathVariable String username) {
-        ResponseEntity<TwitterUserDataFinalDto> twitterUserDataFinalDto = this.getDataUserTwitter(username);
+    @GetMapping("/getusertweets/{twitterUserId}")
+    public ResponseEntity<TweetsUserDto> getUserTweetsTwitter(@PathVariable String twitterUserId) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + Constants.BEARER_TOKEN);
 
         HttpEntity<String> request = new HttpEntity<>(headers);
 
-        String url = "https://api.twitter.com/2/users/ " + twitterUserDataFinalDto.getBody().getData().getId() + "/tweets";
+        String url = "https://api.twitter.com/2/users/ " + twitterUserId + "/tweets";
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<TweetsUserDto> data = restTemplate.exchange(url, HttpMethod.GET, request, TweetsUserDto.class);
